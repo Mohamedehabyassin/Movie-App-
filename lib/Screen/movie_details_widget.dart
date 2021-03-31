@@ -9,20 +9,20 @@ class MovieDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.all(8),
-        margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        padding: EdgeInsets.all(9),
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
-          ),
+          color: Colors.indigo[900],
+          // borderRadius: BorderRadius.only(
+          //   topLeft: Radius.circular(30),
+          //   topRight: Radius.circular(30),
+          // ),
         ),
-        child: Column(
+        child: ListView(
           children: [
             Container(
               margin: const EdgeInsets.symmetric(vertical: 12),
               padding: const EdgeInsets.symmetric(horizontal: 12),
+              height: MediaQuery.of(context).size.height / 2.5,
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(25)),
                 child: Image.network(
@@ -31,11 +31,52 @@ class MovieDetailsWidget extends StatelessWidget {
                 ),
               ),
             ),
-            ElevatedButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text(movie.title),),
-
-          ],)
-    );
+            SizedBox(
+              height: 22,
+            ),
+            Text(
+              movie.title,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
+            SizedBox(
+              height: 22,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children:
+                  movie.genres.map((e) => Chip(label: Text(e.name))).toList(),
+            ),
+            SizedBox(
+              height: 22,
+            ),
+            Text(
+              movie.overview,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
+            SizedBox(
+              height: 22,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Icon(
+                  Icons.star,
+                  color: Colors.yellow,
+                  size: 35,
+                ),
+                SizedBox(width: 2,),
+                Text(
+                  '${movie.voteAverage}',
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.white
+                  ),
+                )
+              ],
+            )
+          ],
+        ));
   }
 }
