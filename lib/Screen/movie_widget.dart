@@ -4,17 +4,14 @@ import 'package:flutter_lab_2/Screen/movie_list_details/movie_details.dart';
 
 class MovieWidget extends StatelessWidget {
   MovieWidget({this.movie});
-
   final Result movie;
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print("Welcome From ${movie.id}");
-        // Navigator.push(
-        //     context,
-        //     MaterialPageRoute(builder: (context) => MovieDetails(id:movie.id)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MovieDetails(id:movie.id)));
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
@@ -28,13 +25,11 @@ class MovieWidget extends StatelessWidget {
           Container(
               height: double.infinity,
               width: MediaQuery.of(context).size.width/ 3,
-              child: Hero(
-                tag: 'dash',
                 child: Image.network(
                   'https://image.tmdb.org/t/p/w500/${movie.backdropPath}',
                   fit: BoxFit.fitHeight,
                 ),
-              )),
+              ),
           SizedBox(
             width: 18,
           ),

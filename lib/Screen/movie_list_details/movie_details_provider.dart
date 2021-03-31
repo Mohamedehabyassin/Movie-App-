@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lab_2/Data/movie_details_request.dart';
+import 'package:flutter_lab_2/Model/movie_details.dart';
 
-class MovieDetailsProvider extends ChangeNotifier{
+class MovieDetailsProvider extends ChangeNotifier {
   var _movieDetailsRequest = MovieDetailsRequest();
-  var movie;
+  MovieDetails movie;
+  final id;
 
-  MovieDetailsProvider(){
+  MovieDetailsProvider({this.id}) {
     getMovie();
   }
 
   void getMovie() {
-   movie = _movieDetailsRequest.fetchMovie();
-          notifyListeners();
+    _movieDetailsRequest.fetchMovie(this.id).then((value) {
+      movie = value;
+      notifyListeners();
+    });
   }
-
 }
