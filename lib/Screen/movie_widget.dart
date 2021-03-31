@@ -11,25 +11,26 @@ class MovieWidget extends StatelessWidget {
       onTap: () {
         Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MovieDetails(id:movie.id)));
+            MaterialPageRoute(
+                builder: (context) => MovieDetails(id: movie.id)));
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
         padding: EdgeInsets.all(8),
-        height: 250,
+        height: MediaQuery.of(context).size.height / 4,
         decoration: BoxDecoration(
           color: Colors.grey[200],
         ),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Container(
-              height: double.infinity,
-              width: MediaQuery.of(context).size.width/ 3,
-                child: Image.network(
-                  'https://image.tmdb.org/t/p/w500/${movie.backdropPath}',
-                  fit: BoxFit.fitHeight,
-                ),
-              ),
+            height: double.infinity,
+            width: MediaQuery.of(context).size.width / 3,
+            child: Image.network(
+              'https://image.tmdb.org/t/p/w500/${movie.backdropPath}',
+              fit: BoxFit.fitHeight,
+            ),
+          ),
           SizedBox(
             width: 18,
           ),

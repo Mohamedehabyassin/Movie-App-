@@ -5,9 +5,7 @@ import 'package:provider/provider.dart';
 
 class MovieDetails extends StatelessWidget {
   MovieDetails({this.id});
-
   final id;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +15,7 @@ class MovieDetails extends StatelessWidget {
         elevation: 0,
         actions: [
           IconButton(
-            icon: Icon(Icons.arrow_back,color: Colors.red,),
+            icon: Icon(Icons.arrow_back,color: Colors.lightGreenAccent,semanticLabel: 'Back',),
             onPressed: () => Navigator.pop(context),
           )
         ],

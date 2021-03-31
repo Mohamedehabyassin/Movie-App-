@@ -3,19 +3,13 @@ import 'package:flutter_lab_2/Model/movie_details.dart';
 
 class MovieDetailsWidget extends StatelessWidget {
   MovieDetailsWidget({this.movie});
-
   final MovieDetails movie;
-
   @override
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.all(9),
         decoration: BoxDecoration(
           color: Colors.indigo[900],
-          // borderRadius: BorderRadius.only(
-          //   topLeft: Radius.circular(30),
-          //   topRight: Radius.circular(30),
-          // ),
         ),
         child: ListView(
           children: [
